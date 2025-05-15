@@ -1047,6 +1047,8 @@ class checkmk_checker(object):
         for _phase1 in _phase1config:
             if _phase1 == None:
                 continue
+            if _phase1.get("disabled") == "1":
+                continue  # Ignoriere deaktivierte Tunnel
             _ikeid = _phase1.get("ikeid")
             _name = _phase1.get("descr")
             if len(_name.strip()) < 1:
